@@ -16,17 +16,17 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "access_key" {
+variable "aws_access_key" {
   type        = string
   description = "The aws development account access key"
 }
 
-variable "secret_key" {
+variable "aws_secret_key" {
   type        = string
   description = "The aws development account secret key"
 }
 
-variable "token_key" {
+variable "aws_token_key" {
   type        = string
   description = "The aws development account token (optional)"
   default     = ""
