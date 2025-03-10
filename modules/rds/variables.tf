@@ -1,3 +1,8 @@
+variable "vpc_id" {
+  description = "The ID of the VPC which will be used to fetch all related information"
+  type        = string
+}
+
 variable "db_user" {
   type      = string
   sensitive = true
