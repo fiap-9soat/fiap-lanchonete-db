@@ -412,3 +412,5 @@ FodyWeavers.xsd
 .idea
 
 node_modules
+.terraform
+dev.auto.tfvars

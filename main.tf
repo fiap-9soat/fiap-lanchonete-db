@@ -2,17 +2,28 @@ data "terraform_remote_state" "vpc" {
   backend = "remote"
 
   config = {
-    organization = var.hcp_org
+    organization = "fiap-lanchonete"
     workspaces = {
-      name = var.hcp_workspace
+      name = "lanchonete-infra-2"
     }
   }
 }
 
-module "rds" {
-  source      = "./modules/rds"
-  db_password = var.db_password
-  db_user     = var.db_user
-  vpc_id      = data.terraform_remote_state.vpc.outputs.shared_vpc_id
+resource "aws_db_subnet_group" "subnet_group" {
+  subnet_ids = data.terraform_remote_state.vpc.outputs.private_subnets_ids
+}
+
+
+resource "aws_db_instance" "mysql" {
+  allocated_storage   = 20
+  engine              = "mysql"
+  engine_version      = "8.0"
+  instance_class      = "db.t3.micro" # Free tier
+  username            = var.db_user
+  password            = var.db_password
+  skip_final_snapshot = true
+
+  vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.security_group_id]
+  db_subnet_group_name   = aws_db_subnet_group.subnet_group.name
 }
 
