@@ -3,8 +3,6 @@ name: My Target Workflow
 on:
   repository_dispatch:
     types: [trigger-workflow]
-  release:
-    types: [published]
 
 env:
   GITHUB_TOKEN: ${{ secrets.PAT }}
@@ -21,7 +19,7 @@ jobs:
       run:
         shell: bash
         # We keep Terraform files in the terraform directory.
-        working-directory: ./
+        working-directory: .
 
     steps:
       - name: Checkout the repository to the runner
