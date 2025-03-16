@@ -2,6 +2,7 @@ data "aws_vpc" "infra_vpc" {
   tags = {
     GithubRepo = "fiap-lanchonete-infra"
     GithubOrg  = "fiap-9soat"
+
   }
 }
 
@@ -10,14 +11,13 @@ data "aws_subnets" "private_subnets" {
     name   = "vpc-id"
     values = [data.aws_vpc.infra_vpc.id]
   }
-  filter {
-    name   = "tag:Name"
-    values = ["*private*"]
-  }
 }
 
 data "aws_security_group" "eks_sg" {
   vpc_id = data.aws_vpc.infra_vpc.id
+  tags = {
+    Name = "eks-sg"
+  }
 }
 
 resource "aws_db_subnet_group" "subnet_group" {
@@ -26,6 +26,7 @@ resource "aws_db_subnet_group" "subnet_group" {
 
 
 resource "aws_db_instance" "mysql" {
+  identifier = "fiap-lanchonete-db"
   allocated_storage   = 20
   engine              = "mysql"
   engine_version      = "8.0"
