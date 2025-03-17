@@ -46,7 +46,11 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Checkout the repository to the runner
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          repository: fiap-9soat/fiap-lanchonete-db
+          token: ${{ secrets.PAT }}
+          clean: false
 
       - name: Setup Terraform with specified version on the runner
         uses: hashicorp/setup-terraform@v2
