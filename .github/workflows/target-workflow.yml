@@ -30,11 +30,6 @@ jobs:
   terraform:
     name: "Terraform Infrastructure Change Management"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        # We keep Terraform files in the terraform directory.
-        working-directory: ./db
 
     steps:
       - name: Configure AWS credentials
