@@ -15,8 +15,6 @@ on:
         required: true
       AWS_REGION:
         required: true
-      EKS_CLUSTER_NAME:
-        required: true
 
 env:
   TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
