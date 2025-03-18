@@ -49,6 +49,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.11.1
+          terraform_wrapper: false
 
       - name: Terraform init
         id: init
@@ -59,4 +60,7 @@ jobs:
         continue-on-error: true
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
+        run: |
+          terraform apply -auto-approve -input=false
+          echo "db_url=$(terraform output db_url)" >> $GITHUB_OUTPUT
+        id: apply
