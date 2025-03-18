@@ -62,5 +62,5 @@ jobs:
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve -input=false
-          echo "db_url=$(terraform output db_url)" >> $GITHUB_OUTPUT
+          echo db_url=$(terraform output db_url) >> $GITHUB_OUTPUT
         id: apply
