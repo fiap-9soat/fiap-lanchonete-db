@@ -17,6 +17,11 @@ on:
         required: true
       PAT:
         required: true
+      DB_USERNAME:
+        required: true
+      DB_PASSWORD:
+        required: true
+
 env:
   TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
   TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
