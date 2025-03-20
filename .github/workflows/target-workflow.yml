@@ -34,6 +34,8 @@ jobs:
   terraform:
     name: "Terraform Infrastructure Change Management"
     runs-on: ubuntu-latest
+    outputs:
+      db_url: ${{ steps.apply.outputs.db_url }}
 
     steps:
       - name: Configure AWS credentials
