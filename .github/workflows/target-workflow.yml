@@ -15,6 +15,12 @@ on:
         required: true
       AWS_REGION:
         required: true
+      PAT:
+        required: true
+      DB_USERNAME:
+        required: true
+      DB_PASSWORD:
+        required: true
 
 env:
   TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
@@ -49,6 +55,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.11.1
+          terraform_wrapper: false
 
       - name: Terraform init
         id: init
