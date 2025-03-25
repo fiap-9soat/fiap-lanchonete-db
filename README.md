@@ -28,6 +28,7 @@ Sendo assim, no primeiro deploy, os projetos devem ser executados na seguinte or
 fiap-lanchonete-auth
 fiap-lanchonete-infra
 fiap-lanchonete-db
+fiap-lanchonete-api
 ```
 
 **Importante**: esse passo só é necessário caso você esteja "subindo" o projeto pela primeira vez,
